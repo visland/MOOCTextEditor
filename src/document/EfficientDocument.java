@@ -17,11 +17,7 @@ public class EfficientDocument extends Document {
 
   public EfficientDocument(String text) {
     super(text);
-    long startTime = System.nanoTime();
     processText();
-    getFleschScore();
-    long endTime = System.nanoTime();
-    double estTime = (endTime - startTime) / 100000000.0;
   }
 
   /**
@@ -54,7 +50,6 @@ public class EfficientDocument extends Document {
 
     // TODO: Finish this method. Remember the countSyllables method from
     // Document. That will come in handy here. isWord defined above will also help.
-    numSentences = getTokens("[^!?.]+").size();
     for (String word : tokens) {
       if (isWord(word)) {
         numWords++;
@@ -78,8 +73,13 @@ public class EfficientDocument extends Document {
             lastCharIsSyllable = false;
           }
         }
+      } else {
+        numSentences++;
       }
     }
+    if (tokens.size() != 0 && isWord(tokens.get(tokens.size() - 1))) {
+        numSentences++;
+      }
     getNumSentences();
     getNumSyllables();
     getNumWords();
