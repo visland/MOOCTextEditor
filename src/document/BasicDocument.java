@@ -54,7 +54,6 @@ public class BasicDocument extends Document {
   public int getNumSentences() {
     // TODO: Implement this method. See the Module 2 support videos
     // if you need help.
-
     return getTokens("[^.!?]+").size();
   }
 
