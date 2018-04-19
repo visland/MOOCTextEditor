@@ -8,7 +8,7 @@ import java.util.TreeSet;
  */
 public class DictionaryBST implements Dictionary {
   private TreeSet<String> dict;
-  // private TreeNode<String> root;
+  //private TreeNode<String> root;
   private int size;
 
   // You'll need a constructor here
@@ -17,17 +17,17 @@ public class DictionaryBST implements Dictionary {
     size = 0;
   }
 
-  // private class TreeNode<String> {
-  // private String value;
-  // private TreeNode<String> left;
-  // private TreeNode<String> right;
-  //
-  // private TreeNode(String val) {
-  // value = val;
-  // left = null;
-  // right = null;
-  // }
-  // }
+//  private class TreeNode<String> {
+//    private String value;
+//    private TreeNode<String> left;
+//    private TreeNode<String> right;
+//
+//    private TreeNode(String val) {
+//      value = val;
+//      left = null;
+//      right = null;
+//    }
+//  }
 
   /**
    * Add this word to the dictionary. Convert it to lowercase first for the
