@@ -88,6 +88,7 @@ public class DictionaryLLTester {
 		assertEquals("Asserting hellow is not in empty dict", false, emptyDict.isWord("hellow"));
 		assertEquals("Asserting hellow is not in small dict", false, smallDict.isWord("hellow"));
 		assertEquals("Asserting hellow is not in large dict", false, largeDict.isWord("hellow"));
+		System.out.println("test");
 		
 		emptyDict.addWord("hellow");
 		smallDict.addWord("hellow");
