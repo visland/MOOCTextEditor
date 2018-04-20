@@ -45,12 +45,10 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
       } else {
         TrieNode curr = root;
         for (int i = 0; i < word.length(); i++) {
-          if (curr.getChild(word.charAt(i)) != null) {
-            curr = curr.getChild(word.charAt(i));
-          } else {
+          if (curr.getChild(word.charAt(i)) == null) {
             curr.insert(word.charAt(i));
-            curr = curr.getChild(word.charAt(i));
           }
+          curr = curr.getChild(word.charAt(i));
         }
         curr.setEndsWord(true);
         size++;
@@ -85,11 +83,7 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
           return false;
         }
       }
-      if (curr.endsWord()) {
-        return true;
-      } else {
-        return false;
-      }
+      return curr.endsWord();
     }
   }
 
