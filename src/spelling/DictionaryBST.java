@@ -8,25 +8,12 @@ import java.util.TreeSet;
  */
 public class DictionaryBST implements Dictionary {
   private TreeSet<String> dict;
-  //private TreeNode<String> root;
   private int size;
 
   // You'll need a constructor here
   public DictionaryBST() {
     dict = new TreeSet<String>();
     size = 0;
-  }
-
-  private class TreeNode<String> {
-    private String value;
-    private TreeNode<String> left;
-    private TreeNode<String> right;
-
-    private TreeNode(String val) {
-      value = val;
-      left = null;
-      right = null;
-    }
   }
 
   /**

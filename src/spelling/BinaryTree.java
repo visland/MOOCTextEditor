@@ -1,6 +1,6 @@
 package spelling;
 
-public class BinaryTree<E extends Comparable <? super E>> {
+public class BinaryTree<E extends Comparable<? super E>> {
   TreeNode<E> root;
 
   public class TreeNode<E> {
@@ -9,27 +9,17 @@ public class BinaryTree<E extends Comparable <? super E>> {
     private TreeNode<E> left;
     private TreeNode<E> right;
 
-    public TreeNode() {
-      value = null;
-      left = null;
-      right = null;
-    }
-
     public TreeNode(E val, TreeNode<E> par) {
       value = val;
       parent = par;
-      left = null;
-      right = null;
     }
 
     public TreeNode<E> addLeftChild(E val) {
-      left = new TreeNode<E>(val, this);
-      return left;
+      return left = new TreeNode<E>(val, this);
     }
 
     public TreeNode<E> addRightChild(E val) {
-      right = new TreeNode<E>(val, this);
-      return right;
+      return right = new TreeNode<E>(val, this);
     }
 
     public TreeNode<E> getLeftChild() {
@@ -39,19 +29,19 @@ public class BinaryTree<E extends Comparable <? super E>> {
     public TreeNode<E> getRightChild() {
       return right;
     }
-    
+
     public E getValue() {
       return value;
     }
   }
-  
+
   public boolean contains(E toFind) {
     TreeNode<E> curr = root;
     while (curr != null) {
       int compare = toFind.compareTo(curr.getValue());
       if (compare < 0) {
         curr.getLeftChild();
-      } else if(compare > 0) {
+      } else if (compare > 0) {
         curr.getRightChild();
       } else {
         return true;
@@ -59,7 +49,7 @@ public class BinaryTree<E extends Comparable <? super E>> {
     }
     return false;
   }
-  
+
   public boolean insert(E toInsert) {
     if (contains(toInsert) || toInsert == null) {
       return false;
@@ -71,7 +61,7 @@ public class BinaryTree<E extends Comparable <? super E>> {
           curr.getLeftChild();
         } else {
           curr.getRightChild();
-        } 
+        }
         compare = toInsert.compareTo(curr.getValue());
       }
       if (compare < 0) {
