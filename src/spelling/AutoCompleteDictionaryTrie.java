@@ -34,23 +34,19 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
    */
   public boolean addWord(String word) {
     word = word.toLowerCase();
-    if (word.equals("")) {
+    if (word.equals("") || isWord(word)) {
       return false;
     } else {
-      if (isWord(word)) {
-        return false;
-      } else {
-        TrieNode curr = root;
-        for (int i = 0; i < word.length(); i++) {
-          if (curr.getChild(word.charAt(i)) == null) {
-            curr.insert(word.charAt(i));
-          }
-          curr = curr.getChild(word.charAt(i));
+      TrieNode curr = root;
+      for (int i = 0; i < word.length(); i++) {
+        if (curr.getChild(word.charAt(i)) == null) {
+          curr.insert(word.charAt(i));
         }
-        curr.setEndsWord(true);
-        size++;
-        return true;
+        curr = curr.getChild(word.charAt(i));
       }
+      curr.setEndsWord(true);
+      size++;
+      return true;
     }
   }
 

@@ -17,17 +17,17 @@ public class DictionaryBST implements Dictionary {
     size = 0;
   }
 
-//  private class TreeNode<String> {
-//    private String value;
-//    private TreeNode<String> left;
-//    private TreeNode<String> right;
-//
-//    private TreeNode(String val) {
-//      value = val;
-//      left = null;
-//      right = null;
-//    }
-//  }
+  private class TreeNode<String> {
+    private String value;
+    private TreeNode<String> left;
+    private TreeNode<String> right;
+
+    private TreeNode(String val) {
+      value = val;
+      left = null;
+      right = null;
+    }
+  }
 
   /**
    * Add this word to the dictionary. Convert it to lowercase first for the
@@ -40,7 +40,7 @@ public class DictionaryBST implements Dictionary {
    */
   public boolean addWord(String word) {
     word = word.toLowerCase();
-    if (dict.contains(word)) {
+    if (isWord(word)) {
       return false;
     } else {
       dict.add(word);
