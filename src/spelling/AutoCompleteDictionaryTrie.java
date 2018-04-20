@@ -1,10 +1,7 @@
 package spelling;
 
-import java.util.List;
-import java.util.Set;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * An trie data structure that implements the Dictionary and the AutoComplete
@@ -113,22 +110,42 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
     // TODO: Implement this method
     // This method should implement the following algorithm:
     // 1. Find the stem in the trie. If the stem does not appear in the trie, return
-    // an
-    // empty list
+    // an empty list
     // 2. Once the stem is found, perform a breadth first search to generate
-    // completions
-    // using the following algorithm:
+    // completions using the following algorithm:
     // Create a queue (LinkedList) and add the node that completes the stem to the
-    // back
-    // of the list.
+    // back of the list.
     // Create a list of completions to return (initially empty)
     // While the queue is not empty and you don't have enough completions:
     // remove the first Node from the queue
     // If it is a word, add it to the completions list
     // Add all of its child nodes to the back of the queue
     // Return the list of completions
-
-    return null;
+    List<String> result = new LinkedList<String>();
+    TrieNode curr = root;
+    for (int i = 0; i < prefix.length(); i++) {
+      if (curr.getChild(prefix.charAt(i)) != null) {
+        curr = curr.getChild(prefix.charAt(i));
+      } else {
+        return result;
+      }
+    }
+    List<TrieNode> completion = new LinkedList<TrieNode>();
+    completion.add(curr);
+    while (!completion.isEmpty()) {
+      TrieNode tNode = completion.remove(0);
+      if (result.size() < numCompletions) {
+        if (tNode.endsWord()) {
+          result.add(tNode.getText());
+        }
+      } else {
+        return result;
+      }
+      for (char nextChar : tNode.getValidNextCharacters()) {
+        completion.add(tNode.getChild(nextChar));
+      }
+    }
+    return result;
   }
 
   // For debugging
