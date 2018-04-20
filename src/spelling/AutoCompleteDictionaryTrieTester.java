@@ -94,13 +94,12 @@ public class AutoCompleteDictionaryTrieTester {
 		assertEquals("Asserting hellow is not in empty dict", false, emptyDict.isWord("hellow"));
 		assertEquals("Asserting hellow is not in small dict", false, smallDict.isWord("hellow"));
 		assertEquals("Asserting hellow is not in large dict", false, largeDict.isWord("hellow"));
-		
 		emptyDict.addWord("hellow");
-		smallDict.addWord("hellow");
+		smallDict.addWord("hel");
 		largeDict.addWord("hellow");
 
 		assertEquals("Asserting hellow is in empty dict", true, emptyDict.isWord("hellow"));
-		assertEquals("Asserting hellow is in small dict", true, smallDict.isWord("hellow"));
+		assertEquals("Asserting hellow is in small dict", true, smallDict.isWord("hel"));
 		assertEquals("Asserting hellow is in large dict", true, largeDict.isWord("hellow"));
 
 		assertEquals("Asserting xyzabc is not in empty dict", false, emptyDict.isWord("xyzabc"));
