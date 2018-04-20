@@ -44,17 +44,14 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
         return false;
       } else {
         TrieNode curr = root;
-        int i = 0;
-        while (curr.getChild(word.charAt(i)) != null) {
+        for (int i = 0; i < word.length(); i++) {
+          if (curr.getChild(word.charAt(i)) == null) {
+            curr.insert(word.charAt(i));
+          }
           curr = curr.getChild(word.charAt(i));
-          i++;
         }
-        while (i < word.length()) {
-          curr.insert(word.charAt(i));
-          curr = curr.getChild(word.charAt(i));
-          size++;
-          i++;
-        }
+        curr.setEndsWord(true);
+        size++;
         return true;
       }
     }
@@ -86,7 +83,7 @@ public class AutoCompleteDictionaryTrie implements Dictionary, AutoComplete {
           return false;
         }
       }
-      return true;
+      return curr.endsWord();
     }
   }
 
